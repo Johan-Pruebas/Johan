@@ -1,3 +1,16 @@
+local WHITELIST = require(script.whitelist)
+
+local whitelistSet = {}
+for _, id in ipairs(WHITELIST) do
+    whitelistSet[id] = true
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    if not whitelistSet[player.UserId] then
+        player:Kick("No tienes permisos para usar este juego/script.")
+    end
+end)
+
 local Players = game:GetService("Players")
 local VirtualUser = game:GetService("VirtualUser")
 
