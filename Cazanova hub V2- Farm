@@ -1,5 +1,3 @@
-local WHITELIST = require(script.Whitelist) -- Asegúrate que el archivo se llama exactamente "Whitelist.lua" y está en la misma carpeta
-
 local whitelistSet = {}
 for _, id in ipairs(WHITELIST) do
     whitelistSet[id] = true
