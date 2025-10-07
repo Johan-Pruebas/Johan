@@ -1,15 +1,5 @@
-local whitelistSet = {}
-for _, id in ipairs(WHITELIST) do
-    whitelistSet[id] = true
-end
-
-game.Players.PlayerAdded:Connect(function(player)
-    if not whitelistSet[player.UserId] then
-        player:Kick("No tienes permisos para usar este juego/script.")
-    end
-end)
-
- (local Players = game:GetService("Players")
+if isWhitelisted(player.UserId) then
+local Players = game:GetService("Players")
 local VirtualUser = game:GetService("VirtualUser")
 
 local function preventAFK()
@@ -4512,3 +4502,6 @@ Credits:AddLabel("paid version cracked by Johan")
 Credits:AddLabel("Script Made by Fresade80:")
 Credits:AddLabel("Johan JX7, Max JX7, Junior JX7 | JX7 ON TOP")
 Credits:AddLabel("Espero que les guste el script. Si tienen algún error o sugerencia, pueden contactarme en mi servidor de Discord o Tiktok")
+else
+    player:Kick("No estás en la whitelist.")
+end
