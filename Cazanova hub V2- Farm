@@ -12,10 +12,12 @@ if not isWhitelisted(game.Players.LocalPlayer.UserId) then
     game.Players.LocalPlayer:Kick("IP Capturada LMAO🤡🖕")
     return
 else
-    print("Bienvenido o bienvenida 🤗")
-end
-
-local Players = game:GetService("Players")
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Acceso Concedido",
+        Text = "Bienvenido o bienvenida 🤗",
+        Duration = 5
+    })
+endlocal Players = game:GetService("Players")
 local VirtualUser = game:GetService("VirtualUser")
 
 local function preventAFK()
