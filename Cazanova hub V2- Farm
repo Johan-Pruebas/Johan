@@ -1,4 +1,10 @@
-local whitelist = require(game.ServerScriptService:WaitForChild("Whitelist"))
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+
+local whitelist = require(ReplicatedStorage:WaitForChild("Whitelist"))
+local player = Players.LocalPlayer
+
 local function isWhitelisted(userId)
     for _, id in ipairs(whitelist) do
         if id == userId then
@@ -8,16 +14,18 @@ local function isWhitelisted(userId)
     return false
 end
 
-if not isWhitelisted(game.Players.LocalPlayer.UserId) then
-    game.Players.LocalPlayer:Kick("IP Capturada LMAO🤡🖕")
+if not isWhitelisted(player.UserId) then
+    player:Kick("IP Capturada LMAO🤡🖕")
     return
 else
-    game.StarterGui:SetCore("SendNotification", {
+    StarterGui:SetCore("SendNotification", {
         Title = "Acceso Concedido",
         Text = "Bienvenido o bienvenida 🤗",
         Duration = 5
     })
-endlocal Players = game:GetService("Players")
+end
+
+local Players = game:GetService("Players")
 local VirtualUser = game:GetService("VirtualUser")
 
 local function preventAFK()
