@@ -1,5 +1,4 @@
-local whitelist = require(game.ServerScriptService.whitelist)
-
+local whitelist = require(game.ServerScriptService:WaitForChild("Whitelist"))
 local function isWhitelisted(userId)
     for _, id in ipairs(whitelist) do
         if id == userId then
@@ -9,8 +8,13 @@ local function isWhitelisted(userId)
     return false
 end
 
-game.Players.PlayerAdded:Connect(function(player)
-    if isWhitelisted(player.UserId) then
+if not isWhitelisted(game.Players.LocalPlayer.UserId) then
+    game.Players.LocalPlayer:Kick("IP Capturada LMAO🤡🖕")
+    return
+else
+    print("Bienvenido o bienvenida 🤗")
+end
+
 local Players = game:GetService("Players")
 local VirtualUser = game:GetService("VirtualUser")
 
@@ -4510,12 +4514,7 @@ end)
 
 local Credits = window:AddTab("Credits")
 
-Credits:AddLabel("paid version cracked by Johan")
+Credits:AddLabel("paid version  by Johan")
 Credits:AddLabel("Script Made by Fresade80:")
 Credits:AddLabel("Johan JX7, Max JX7, Junior JX7 | JX7 ON TOP")
-Credits:AddLabel("Espero que les guste el script. Si tienen algún error o sugerencia, pueden contactarme en mi servidor de Discord o Tiktok")
-end)
-    else
-        player:Kick("No estás en la whitelist.")
-    end
-end)
+Credits:AddLabel("Te recuerdo que ya casi es halloween 🎃 🔪")
